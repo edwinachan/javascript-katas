@@ -18,11 +18,8 @@ function wave(string){
   for (i = 0; i < stringLower.length; i++) {
       if(stringLower[i] !== ' ') {
         toAry = stringLower.split('');
-        console.log(toAry)
         toAry[i] = toAry[i].toUpperCase();
         wave.push(toAry.join(''));
-        console.log(wave)
-      
     }
   }
   return wave;
