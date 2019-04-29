@@ -136,10 +136,6 @@ function haveGo(deck) {
 deck = createDeck()
 shuffleDeck(deck)
 listOfNames = ['Ed', 'Eddie', 'Chan']
-//player = [getNextCard(), getNextCard()]
-//console.log(getCardString(player[0]))
 createPlayers(listOfNames)
 discardPile = deck[deck.length - 1]
-//console.log(getPlayerAndCard(players[0]))
-//console.log(getCardString(players[0][0]))
 playGame()
