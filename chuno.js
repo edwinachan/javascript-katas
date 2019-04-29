@@ -46,23 +46,23 @@ function createPlayers (names) {
   for (i = 0; i < numOfPlayers; i++) {
     let player = {
       name: names[i],
-      cards: {
-        card1: getNextCard(), //each card is a property of the 'cards' object within 'player'
-        card2: getNextCard()
-      }
+      cards: [
+        getNextCard(),
+        getNextCard()]
     }
     players.push(player)
-  }
+}
 }
 
-function getCardObject (object) { //need to create loop which allows us to print each card property in 'cards'
-  var cardObject = Object.keys(object) //array of key strings, e.g. ["card1", "card2"]
+function getCardObject (listofCards) { //need to create loop which allows us to print each card in list 'cards'
   var string = ''
-  for (i = 0; i < cardObject.length /*number of keys*/; i++) {
-    string += getCardString(object[Object.keys(object)[i]]) + '\n'
-  } //getCardString(x) allows us to index into 'cards' object, e.g.[0] would give us the value for the first property, i.e. value of card1 which is in itself a card object
+
+  for (i = 0; i < listofCards.length; i++) {
+    string += getCardString(listofCards[i]) + '\n'
+  }
   return string
 }
+
 
 function getPlayerAndCard (player) {
   return player.name + " has " + getCardObject(player.cards)
@@ -92,11 +92,11 @@ function haveGo(deck) {
 
   console.log("Top of discard pile: " + getCardString(discardPile))
 
-  var object = players[playerGoing].cards //define the 'cards' object for this player to make things less messy
-  var cardObjectList = Object.keys(object) //array of key strings, e.g. ["card1"]
-  for (i = 0; i < cardObjectList.length; i++) {
+  var object = players[playerGoing].cards //list of cards for this player
 
-    var cardObject = object[Object.keys(object)[i]] //defines which property of the 'cards' object we're looping through. This in itself is a card object
+  for (i = 0; i < object.length; i++) {
+
+    var cardObject = object[i] //get ith element of 'cards' list
 
     if (cardObject.colour == discardPile.colour ||  cardObject.number == discardPile.number) {
 
@@ -104,33 +104,24 @@ function haveGo(deck) {
 
       discardPile = Object.assign({}, cardObject) //Copy matched card onto discardPile
 
-      delete object[Object.keys(object)[i]] //Delete matched card from player's hand
+      object.splice(i, i+1) //Remove matched card from player's hand
 
-      if (Object.keys(object).length === 0) {
+      if (object.length === 0) {
         return true
-      } else {return false} //Check  if the player has run out of cards
+      } else {return false} //Check if the player has run out of cards
 
-      }
     }
+  }
 
-    //If we don't match a card, add new card object as a property to the 'cards' object
-    number = cardObjectList.length + 1
-    console.log(number)
-    newNumber = 'card' + number.toString()
-    console.log(newNumber)
+    //If we don't match the discardPile, push new card object onto list
+    players[playerGoing].cards.push(getNextCard())
 
-    object[newNumber] = getNextCard()
-    //object[newNumber] = Object.assign({}, getNextCard())
-    console.log(players[playerGoing])
-
-    console.log('No cards matched, new card added to the hand')
+    console.log('No cards matched, ' + getCardString(object[object.length-1]) + ' has been added to the hand')
 
 
   return false
 
 }
-
-
 
 
 deck = createDeck()
