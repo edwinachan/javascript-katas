@@ -104,7 +104,7 @@ function haveGo(deck) {
 
       discardPile = Object.assign({}, cardObject) //Copy matched card onto discardPile
 
-      object.splice(i, 1) //Remove matched card from player's hand
+      object.splice(i, 1) //Remove matched card from player's hand. "From the 'ith element, remove 1 element'
 
       if (object.length === 0) {
         return true
