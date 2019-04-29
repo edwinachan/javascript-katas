@@ -22,7 +22,7 @@ function createDeck() {
 
 function shuffleDeck(deck) {
   for (let i=0; i < deck.length; i++) {
-    //Get a whole number that is between 0-51. Assign it to swapIdx
+    //Get a whole number that is between 0-length of deck. Assign it to swapIdx
     let swapIdx = Math.trunc(Math.random() * deck.length);
     let tmp = deck[swapIdx];
     //Temporarily assign the card at swapIdx within deck to 'tmp'
