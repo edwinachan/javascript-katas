@@ -19,14 +19,13 @@ Test.expect(validate('Password123'), 'Password123 - Expected true');
 
 */
 
+
 function validate(password) {
 
-    console.log(password)
-
-    var regex = /^[a-z0-9]+$/i
+    var regex = /^[a-zA-Z0-9]+$/i
     //'^' means beginning of the string
     //'$' means end of string
-    //[0-9a-z]+ means one oe more of character from 0 to 9 OR from a to z
+    //[a-zA-Z0-9]+ means one or more of character from a to z OR A to Z OR 0 to 9
 
     var count = 0
 
@@ -39,6 +38,7 @@ function validate(password) {
     var split = password.split('')
     var lowerCount = 0
     var upperCount = 0
+    var numberCount = 0
     
     for (i = 0; i < split.length; i++) {
         if (split[i].toUpperCase() != split[i].toLowerCase() /*this will return true only if it's a letter*/){
@@ -46,11 +46,14 @@ function validate(password) {
                 lowerCount ++
             } else if (split[i] === split[i].toUpperCase() ) {
                 upperCount ++
-            }   
-        }     
+            }
+        }   
+        if ('0123456789'.includes(split[i])) {
+            numberCount ++ //check if it includes at least 1 number
+        }  
     }
 
-    if (count == 1 && password.length >= 6 && lowerCount != 0 && upperCount != 0) {
+    if (count == 1 && password.length >= 6 && lowerCount != 0 && upperCount != 0 && numberCount != 0) {
         return true
     } else {return false}
 
