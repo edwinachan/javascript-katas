@@ -22,10 +22,10 @@ Test.expect(validate('Password123'), 'Password123 - Expected true');
 
 function validate(password) {
 
-    var regex = /^[a-zA-Z0-9]+$/i
+    var regex = /^[a-z0-9]+$/i
     //'^' means beginning of the string
     //'$' means end of string
-    //[a-zA-Z0-9]+ means one or more of character from a to z OR A to Z OR 0 to 9
+    //[a-z0-9]+ means one or more of character from a to z OR 0 to 9
 
     var count = 0
 
