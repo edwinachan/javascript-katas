@@ -9,7 +9,7 @@ function minesweeper(m, n, input){
     var topRow = [0, n-1]
     var bottomRow = [(m*n) - n, (n*n) - 1]
 
-    function topLeftCornerUpdate() {
+    function checkTopLeftCorner() {
         var count = 0
 
         var topLeftCornerIndex = 0
@@ -26,7 +26,7 @@ function minesweeper(m, n, input){
         }
     }
 
-    function bottomRightCornerUpdate() {
+    function checkBottomRightCorner() {
         var count = 0
 
         var bottomRightCornerIndex = (m*n) -1
@@ -43,7 +43,7 @@ function minesweeper(m, n, input){
         }
     }
 
-    function topRightCornerUpdate() {
+    function checkTopRightCorner() {
         var count = 0
 
         var topRightCornerIndex = n-1
@@ -60,7 +60,7 @@ function minesweeper(m, n, input){
         }
     }
 
-    function bottomLeftCornerUpdate() {
+    function checkBottomLeftCorner() {
         var count = 0
 
         var bottomLeftCornerIndex = (m*n)-n
@@ -168,10 +168,10 @@ function minesweeper(m, n, input){
     }
 }
 
-topLeftCornerUpdate()
-bottomRightCornerUpdate()
-topRightCornerUpdate()
-bottomLeftCornerUpdate()
+checkTopLeftCorner()
+checkBottomRightCorner()
+checkTopRightCorner()
+checkBottomLeftCorner()
 checkLHS()
 checkRHS()
 checkTop()
