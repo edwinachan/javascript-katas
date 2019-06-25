@@ -184,3 +184,4 @@ return finalArray
 
 console.log(minesweeper(3, 5, '**.........*...'))
 console.log(minesweeper(4, 4, '*........*......'))
+console.log(minesweeper(4, 5, '*...*..*..........*.'))
