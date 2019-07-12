@@ -42,13 +42,13 @@ function lcd(input, w, h) {
 
 
             if (h > 1) {
-                for (i = 0; i < h; i++){
+                for (i = 0; i < h-1; i++){
                     arrayOfNumsWithHeight.splice(index + indexShift, 0, duplicateRow)
                 }
             }
             
 
-            indexShift += h
+            indexShift += h -1
 
           }
 
@@ -67,8 +67,7 @@ function lcd(input, w, h) {
     var row3 = ''
     var row4 = ''
     var row5 = ''
-    var row6 = ''
-    var row7 = ''
+
 
     for (i = 0; i < s.length; i++) {
         if (s[i] === 1) {
@@ -103,8 +102,7 @@ function lcd(input, w, h) {
             row3 += arrayOfNumsWithHeight[2].join('')
             row4 += arrayOfNumsWithHeight[3].join('')
             row5 += arrayOfNumsWithHeight[4].join('')
-            row6 += arrayOfNumsWithHeight[5].join('')
-            row7 += arrayOfNumsWithHeight[6].join('')
+ 
 
         }
 
@@ -213,9 +211,7 @@ function lcd(input, w, h) {
     }
 
 
-    return row1 + '\n' + row2 + '\n' + row3 + '\n' + row4 + '\n' + row5 + '\n' + row6 + '\n' + row7
+    return row1 + '\n' + row2 + '\n' + row3 + '\n' + row4 + '\n' + row5
 }
 
 console.log(lcd(2, 2, 2))
-
-
