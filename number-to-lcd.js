@@ -5,24 +5,25 @@ function lcd(input, w, h) {
 
     function changeWidth(array) {
         array.forEach(function(item) {
-            if (item.includes('_')) {
+            if (w > 1){
+                if (item.includes('_')) {
 
-                var index = item.indexOf('_')
+                    var index = item.indexOf('_')
 
-                if (w > 1) {
                     item.splice(index, 0, '_'.repeat(w-1))
-                }
 
-            } else if (!('_').includes(item) && item[0] === '|') {
+                } else if (!('_').includes(item) && item[0] === '|') {
 
-                item.splice(item.length-1, 0, ' '.repeat(w-1))
-            } else if (!('_').includes(item) && item[item.length-2] === '|') {
+                    item.splice(item.length-1, 0, ' '.repeat(w-1))
+                } else if (!('_').includes(item) && item[item.length-2] === '|') {
+                    item.splice(0, 0, ' '.repeat(w-1))
+                } else {
                 item.splice(0, 0, ' '.repeat(w-1))
-            } else {
-              item.splice(0, 0, ' '.repeat(w-1))
+                }
             }
         })
     }
+
 
     function changeHeight(array) {
         var indexShift = 0
@@ -34,15 +35,16 @@ function lcd(input, w, h) {
           if (item.includes('|')) {
             var duplicateRow = item.slice()
 
-            for (i = 0; i < duplicateRow.length; i++) {
+            for (var i = 0; i < duplicateRow.length; i++) {
               if (duplicateRow[i] !== '|') {
-                duplicateRow[i] = ' '
+                  var length = item[i].length
+                duplicateRow[i] = ' '.repeat(length)
               }
             }
 
 
             if (h > 1) {
-                for (i = 0; i < h-1; i++){
+                for (var i = 0; i < h-1; i++){
                     arrayOfNumsWithHeight.splice(index + indexShift, 0, duplicateRow)
                 }
             }
@@ -63,18 +65,18 @@ function lcd(input, w, h) {
 
     function generateNumberOfRows() {
         if (h > 1){
-            for (i = 0; i < 3 + h + (h-2); i++) {
+            for (var i = 0; i < 3 + h + (h-2); i++) {
                 rows.push([''])
             }
         } else {
-            for (i = 0; i < 3; i++) {
+            for (var i = 0; i < 3; i++) {
                 rows.push([''])
             }
         }
     }
 
     function generateResult(array) {
-        for (i = 0; i < rows.length; i++) {
+        for (var i = 0; i < rows.length; i++) {
             rows[i] += array[i].join('')
         }
     }
@@ -82,7 +84,7 @@ function lcd(input, w, h) {
 
     generateNumberOfRows()
 
-    for (i = 0; i < s.length; i++) {
+    for (var i = 0; i < s.length; i++) {
         if (s[i] === 1) {
             var one = ['  ' , '| ', '| ']
 
@@ -224,7 +226,7 @@ function lcd(input, w, h) {
 
     var result = ''
 
-    for (i = 0; i < rows.length; i++) {
+    for (var i = 0; i < rows.length; i++) {
         result += rows[i] + '\n'
     }
 
@@ -233,4 +235,11 @@ function lcd(input, w, h) {
 
 }
 
-console.log(lcd(2, 2, 2))
+console.log(lcd(123456789, 1, 1))
+console.log(lcd(123456789, 2, 2))
+console.log(lcd(123456789, 2, 1))
+console.log(lcd(123456789, 1, 2))
+console.log(lcd(987654321, 1, 1))
+console.log(lcd(987654321, 2, 2))
+console.log(lcd(987654321, 2, 1))
+console.log(lcd(987654321, 1, 2))
