@@ -1,6 +1,5 @@
 function lcd(input, w, h) {
     var s = Array.from(input.toString()).map(Number)
-    console.log(s)
 
     var rows = []
 
@@ -10,7 +9,9 @@ function lcd(input, w, h) {
 
                 var index = item.indexOf('_')
 
-                item.splice(index, 0, '_'.repeat(w-1))
+                if (w > 1) {
+                    item.splice(index, 0, '_'.repeat(w-1))
+                }
 
             } else if (!('_').includes(item) && item[0] === '|') {
 
@@ -24,7 +25,6 @@ function lcd(input, w, h) {
     }
 
     function changeHeight(array) {
-
         var indexShift = 0
 
         array.forEach(function(item) {
@@ -61,13 +61,21 @@ function lcd(input, w, h) {
       })
     }
 
+    function generateNumberOfRows() {
 
-    var row1 = ''
-    var row2 = ''
-    var row3 = ''
-    var row4 = ''
-    var row5 = ''
+        for (i = 0; i < 3 + h + (h-2); i++) {
+            rows.push([''])
+        }
+    }
 
+    function generateResult(array) {
+        for (i = 0; i < rows.length; i++) {
+            rows[i] += array[i].join('')
+        }
+    }
+
+
+    generateNumberOfRows()
 
     for (i = 0; i < s.length; i++) {
         if (s[i] === 1) {
@@ -78,9 +86,11 @@ function lcd(input, w, h) {
 
             changeWidth(arrayOfNums)
 
-            row1 += arrayOfNums[0].join('')
-            row2 += arrayOfNums[1].join('')
-            row3 += arrayOfNums[2].join('')
+            var arrayOfNumsWithHeight = arrayOfNums.slice()
+
+            changeHeight(arrayOfNums)
+
+            generateResult(arrayOfNumsWithHeight)
 
 
         }
@@ -97,16 +107,11 @@ function lcd(input, w, h) {
 
             changeHeight(arrayOfNums)
 
-            row1 += arrayOfNumsWithHeight[0].join('')
-            row2 += arrayOfNumsWithHeight[1].join('')
-            row3 += arrayOfNumsWithHeight[2].join('')
-            row4 += arrayOfNumsWithHeight[3].join('')
-            row5 += arrayOfNumsWithHeight[4].join('')
- 
-
+            generateResult(arrayOfNumsWithHeight)
         }
 
         if (s[i] === 3) {
+
             var three = ['_  ', '_| ', '_| ']
             var arrayOfNums = []
             convertNumsToArrays(three)
@@ -117,11 +122,7 @@ function lcd(input, w, h) {
 
             changeHeight(arrayOfNums)
 
-            row1 += arrayOfNumsWithHeight[0].join('')
-            row2 += arrayOfNumsWithHeight[1].join('')
-            row3 += arrayOfNumsWithHeight[2].join('')
-            row4 += arrayOfNumsWithHeight[3].join('')
-            row5 += arrayOfNumsWithHeight[4].join('')
+            generateResult(arrayOfNumsWithHeight)
 
         }
 
@@ -135,11 +136,7 @@ function lcd(input, w, h) {
 
             changeHeight(arrayOfNums)
 
-            row1 += arrayOfNumsWithHeight[0].join('')
-            row2 += arrayOfNumsWithHeight[1].join('')
-            row3 += arrayOfNumsWithHeight[2].join('')
-            row4 += arrayOfNumsWithHeight[3].join('')
-            row5 += arrayOfNumsWithHeight[4].join('')
+            generateResult(arrayOfNumsWithHeight)
 
         }
 
@@ -150,9 +147,11 @@ function lcd(input, w, h) {
 
             changeWidth(arrayOfNums)
 
-            row1 += arrayOfNums[0].join('')
-            row2 += arrayOfNums[1].join('')
-            row3 += arrayOfNums[2].join('')
+            var arrayOfNumsWithHeight = arrayOfNums.slice()
+
+            changeHeight(arrayOfNums)
+
+            generateResult(arrayOfNumsWithHeight)
         }
 
         if (s[i] === 6) {
@@ -163,9 +162,11 @@ function lcd(input, w, h) {
 
             changeWidth(arrayOfNums)
 
-            row1 += arrayOfNums[0].join('')
-            row2 += arrayOfNums[1].join('')
-            row3 += arrayOfNums[2].join('')
+            var arrayOfNumsWithHeight = arrayOfNums.slice()
+
+            changeHeight(arrayOfNums)
+
+            generateResult(arrayOfNumsWithHeight)
         }
 
         if (s[i] === 7) {
@@ -176,9 +177,11 @@ function lcd(input, w, h) {
 
             changeWidth(arrayOfNums)
 
-            row1 += arrayOfNums[0].join('')
-            row2 += arrayOfNums[1].join('')
-            row3 += arrayOfNums[2].join('')
+            var arrayOfNumsWithHeight = arrayOfNums.slice()
+
+            changeHeight(arrayOfNums)
+
+            generateResult(arrayOfNumsWithHeight)
         }
 
         if (s[i] === 8) {
@@ -189,9 +192,11 @@ function lcd(input, w, h) {
 
             changeWidth(arrayOfNums)
 
-            row1 += arrayOfNums[0].join('')
-            row2 += arrayOfNums[1].join('')
-            row3 += arrayOfNums[2].join('')
+            var arrayOfNumsWithHeight = arrayOfNums.slice()
+
+            changeHeight(arrayOfNums)
+
+            generateResult(arrayOfNumsWithHeight)
         }
 
         if (s[i] === 9) {
@@ -202,16 +207,25 @@ function lcd(input, w, h) {
 
             changeWidth(arrayOfNums)
 
-            row1 += arrayOfNums[0].join('')
-            row2 += arrayOfNums[1].join('')
-            row3 += arrayOfNums[2].join('')
+            var arrayOfNumsWithHeight = arrayOfNums.slice()
+
+            changeHeight(arrayOfNums)
+
+            generateResult(arrayOfNumsWithHeight)
         }
 
 
     }
 
+    var result = ''
 
-    return row1 + '\n' + row2 + '\n' + row3 + '\n' + row4 + '\n' + row5
+    for (i = 0; i < rows.length; i++) {
+        result += rows[i] + '\n'
+    }
+
+    return result
+
+
 }
 
 console.log(lcd(2, 2, 2))
