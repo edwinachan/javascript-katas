@@ -62,9 +62,14 @@ function lcd(input, w, h) {
     }
 
     function generateNumberOfRows() {
-
-        for (i = 0; i < 3 + h + (h-2); i++) {
-            rows.push([''])
+        if (h > 1){
+            for (i = 0; i < 3 + h + (h-2); i++) {
+                rows.push([''])
+            }
+        } else {
+            for (i = 0; i < 3; i++) {
+                rows.push([''])
+            }
         }
     }
 
