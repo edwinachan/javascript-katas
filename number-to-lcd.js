@@ -20,172 +20,137 @@ function lcd(input, w) {
         })
     }
 
+    function convertNumsToArrays(array) {
+      array.forEach(function(item) {
+        arrayOfNums.push(Array.from(item))
+      })
+    }
+
     var row1 = ''
     var row2 = ''
     var row3 = ''
+    var arrayOfNums = []
 
     for (i = 0; i < s.length; i++) {
         if (s[i] === 1) {
-            oneRow1 = '  '
-            oneRow2 = '| '
-            oneRow3 = '| '
-            var row1Array = Array.from(oneRow1)
-            var row2Array = Array.from(oneRow2)
-            var row3Array = Array.from(oneRow3)
+            var one = ['  ' , '| ', '| ']
 
-            var array = [row1Array, row2Array, row3Array]
+            var arrayOfNums = []
+            convertNumsToArrays(one)
 
-            changeWidth(array)
+            changeWidth(arrayOfNums)
 
-            row1 += row1Array.join('')
-            row2 += row2Array.join('')
-            row3 += row3Array.join('')
+            row1 += arrayOfNums[0].join('')
+            row2 += arrayOfNums[1].join('')
+            row3 += arrayOfNums[2].join('')
+
 
         }
 
 
         if (s[i] === 2) {
+            var two = [' _  ', ' _| ',  '|_  ']
 
-            var twoRow1 = ' _  '
-            var twoRow2 = ' _| '
-            var twoRow3 = '|_  '
-            var row1Array = Array.from(twoRow1)
-            var row2Array = Array.from(twoRow2)
-            var row3Array = Array.from(twoRow3)
+            var arrayOfNums = []
+            convertNumsToArrays(two)
 
-            var array = [row1Array, row2Array, row3Array]
+            changeWidth(arrayOfNums)
 
-            changeWidth(array)
+            row1 += arrayOfNums[0].join('')
+            row2 += arrayOfNums[1].join('')
+            row3 += arrayOfNums[2].join('')
 
-            row1 += row1Array.join('')
-            row2 += row2Array.join('')
-            row3 += row3Array.join('')
+
 
         }
 
         if (s[i] === 3) {
-            var threeRow1 = '_  '
-            var threeRow2 = '_| '
-            var threeRow3 = '_| '
-            var row1Array = Array.from(threeRow1)
-            var row2Array = Array.from(threeRow2)
-            var row3Array = Array.from(threeRow3)
+            var three = ['_  ', '_| ', '_| ']
+            var arrayOfNums = []
+            convertNumsToArrays(three)
 
-            var array = [row1Array, row2Array, row3Array]
+            changeWidth(arrayOfNums)
 
-            changeWidth(array)
-
-            row1 += row1Array.join('')
-            row2 += row2Array.join('')
-            row3 += row3Array.join('')
+            row1 += arrayOfNums[0].join('')
+            row2 += arrayOfNums[1].join('')
+            row3 += arrayOfNums[2].join('')
 
         }
 
         if ( s[i] === 4) {
+            var four = ['    ', '|_| ', '  | ']
+            var arrayOfNums = []
+            convertNumsToArrays(four)
 
-            var fourRow1 = '    '
-            var fourRow2 = '|_| '
-            var fourRow3 = '  | '
-            var row1Array = Array.from(fourRow1)
-            var row2Array = Array.from(fourRow2)
-            var row3Array = Array.from(fourRow3)
+            changeWidth(arrayOfNums)
 
-            var array = [row1Array, row2Array, row3Array]
-
-            changeWidth(array)
-
-            row1 += row1Array.join('')
-            row2 += row2Array.join('')
-            row3 += row3Array.join('')
+            row1 += arrayOfNums[0].join('')
+            row2 += arrayOfNums[1].join('')
+            row3 += arrayOfNums[2].join('')
         }
 
         if (s[i] === 5) {
-            fiveRow1 = ' _  '
-            fiveRow2 = '|_  '
-            fiveRow3 = ' _| '
-            var row1Array = Array.from(fiveRow1)
-            var row2Array = Array.from(fiveRow2)
-            var row3Array = Array.from(fiveRow3)
+            var five = [' _  ', '|_  ', ' _| ']
+            var arrayOfNums = []
+            convertNumsToArrays(five)
 
-            var array = [row1Array, row2Array, row3Array]
+            changeWidth(arrayOfNums)
 
-            changeWidth(array)
-
-            row1 += row1Array.join('')
-            row2 += row2Array.join('')
-            row3 += row3Array.join('')
+            row1 += arrayOfNums[0].join('')
+            row2 += arrayOfNums[1].join('')
+            row3 += arrayOfNums[2].join('')
         }
 
         if (s[i] === 6) {
-            sixRow1 = ' _  '
-            sixRow2 = '|_  '
-            sixRow3 = '|_| '
 
-            var row1Array = Array.from(sixRow1)
-            var row2Array = Array.from(sixRow2)
-            var row3Array = Array.from(sixRow3)
+            var six = [' _  ', '|_  ', '|_| ']
+            var arrayOfNums = []
+            convertNumsToArrays(six)
 
-            var array = [row1Array, row2Array, row3Array]
+            changeWidth(arrayOfNums)
 
-            changeWidth(array)
-
-            row1 += row1Array.join('')
-            row2 += row2Array.join('')
-            row3 += row3Array.join('')
+            row1 += arrayOfNums[0].join('')
+            row2 += arrayOfNums[1].join('')
+            row3 += arrayOfNums[2].join('')
         }
 
         if (s[i] === 7) {
-            sevenRow1 = '_  '
-            sevenRow2 = ' | '
-            sevenRow3 = ' | '
 
-            var row1Array = Array.from(sevenRow1)
-            var row2Array = Array.from(sevenRow2)
-            var row3Array = Array.from(sevenRow3)
+            var seven = ['_  ', ' | ', ' | ']
+            var arrayOfNums = []
+            convertNumsToArrays(seven)
 
-            var array = [row1Array, row2Array, row3Array]
+            changeWidth(arrayOfNums)
 
-            changeWidth(array)
-
-            row1 += row1Array.join('')
-            row2 += row2Array.join('')
-            row3 += row3Array.join('')
+            row1 += arrayOfNums[0].join('')
+            row2 += arrayOfNums[1].join('')
+            row3 += arrayOfNums[2].join('')
         }
 
         if (s[i] === 8) {
-            eightRow1 = ' _  '
-            eightRow2 = '|_| '
-            eightRow3 = '|_| '
 
-            var row1Array = Array.from(eightRow1)
-            var row2Array = Array.from(eightRow2)
-            var row3Array = Array.from(eightRow3)
+            var eight = [' _  ', '|_| ', '|_| ']
+            var arrayOfNums = []
+            convertNumsToArrays(eight)
 
-            var array = [row1Array, row2Array, row3Array]
+            changeWidth(arrayOfNums)
 
-            changeWidth(array)
-
-            row1 += row1Array.join('')
-            row2 += row2Array.join('')
-            row3 += row3Array.join('')
+            row1 += arrayOfNums[0].join('')
+            row2 += arrayOfNums[1].join('')
+            row3 += arrayOfNums[2].join('')
         }
 
         if (s[i] === 9) {
-            nineRow1 = ' _  '
-            nineRow2 = '|_| '
-            nineRow3 = ' _| '
+            var nine = [' _  ', '|_| ', ' _| ']
 
-            var row1Array = Array.from(nineRow1)
-            var row2Array = Array.from(nineRow2)
-            var row3Array = Array.from(nineRow3)
+            var arrayOfNums = []
+            convertNumsToArrays(nine)
 
-            var array = [row1Array, row2Array, row3Array]
+            changeWidth(arrayOfNums)
 
-            changeWidth(array)
-
-            row1 += row1Array.join('')
-            row2 += row2Array.join('')
-            row3 += row3Array.join('')
+            row1 += arrayOfNums[0].join('')
+            row2 += arrayOfNums[1].join('')
+            row3 += arrayOfNums[2].join('')
         }
 
 
@@ -195,5 +160,3 @@ function lcd(input, w) {
 }
 
 console.log(lcd(345, 2))
-
-
