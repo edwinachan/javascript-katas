@@ -48,8 +48,50 @@ function reversi(input) {
         }
     }
 
+    function canGoUp() {
+        for (var i = 0; i < input.length-1; i++) {
+
+            if (input[i].includes(playerGoing)) {
+                var rowOfPlayer = i
+                var positionOfPlayer = input[i].indexOf(playerGoing)
+
+                for (var j = rowOfPlayer - 1; j > -1; j--) {
+                    if (input[j][positionOfPlayer] === opposingPlayer) {
+                        continue
+                    } else if (input[j+1][positionOfPlayer] === opposingPlayer && input[j][positionOfPlayer] === '.') {
+                        input[j][positionOfPlayer] = '0'
+                    } else {
+                        continue
+                    }
+                }
+            }
+
+        }
+    }
+
+    function canGoDown() {
+        for (var i = 0; i < input.length-1; i++) {
+            if (input[i].includes(playerGoing)) {
+                var rowOfPlayer = i
+                var positionOfPlayer = input[i].indexOf(playerGoing)
+            }
+
+            for (var j = rowOfPlayer + 1; j < 9; j++){
+                if (input[j][positionOfPlayer] === opposingPlayer) {
+                    continue
+                } else if (input[j-1][positionOfPlayer] === opposingPlayer && input[j][positionOfPlayer] === '.') {
+                    input[j][positionOfPlayer] = '0'
+                } else {
+                    continue
+                }
+            }
+        }
+    }
+
     canGoLeft()
     canGoRight()
+    canGoUp()
+    canGoDown()
 
     return input
 }
@@ -70,10 +112,10 @@ var testCase2 = [
     ['.', '.', '.', '.', '.', '.', '.', '.', ],
     ['.', '.', '.', '.', '.', '.', '.', '.', ],
     ['.', '.', '.', '.', '.', '.', '.', '.', ],
-    ['.', '.', '.', 'B', 'W', '.', '.', '.', ],
-    ['.', '.', 'B', 'B', 'W', '.', '.', '.', ],
-    ['.', '.', 'W', 'W', 'W', 'W', '.', '.', ],
-    ['.', '.', '.', '.', '.', 'B', '.', '.', ],
+    ['.', '.', 'B', 'B', 'B', '.', '.', '.', ],
+    ['.', '.', 'B', 'B', 'B', '.', '.', '.', ],
+    ['.', '.', 'B', 'W', 'B', 'B', '.', '.', ],
+    ['.', '.', '.', '.', 'W', 'W', '.', '.', ],
     ['.', '.', '.', '.', '.', '.', '.', '.', ],
     ['B']
 ]
