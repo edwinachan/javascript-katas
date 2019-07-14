@@ -54,8 +54,8 @@ function reversi(input) {
             if (input[i].includes(playerGoing)) {
                 var rowOfPlayer = i
 
-                for (var j = 0; j < input[i].length; j++) {
-                    if (input[i][j] === playerGoing) {
+                for (var j = 0; j < input[rowOfPlayer].length; j++) {
+                    if (input[rowOfPlayer][j] === playerGoing) {
                         var columnOfPlayer = j
                         
                         for (var k = rowOfPlayer - 1; k > -1; k--) {
@@ -80,8 +80,8 @@ function reversi(input) {
             if (input[i].includes(playerGoing)) {
                 var rowOfPlayer = i
 
-                for (var j = 0; j < input[i].length; j++ ) {
-                    if (input[i][j] === playerGoing) {
+                for (var j = 0; j < input[rowOfPlayer].length; j++ ) {
+                    if (input[rowOfPlayer][j] === playerGoing) {
                         var columnOfPlayer = j
 
                         for (var k = rowOfPlayer + 1; k < 9; k++ ) {
@@ -105,8 +105,8 @@ function reversi(input) {
             if (input[i].includes(playerGoing)) {
                 var rowOfPlayer = i
 
-                for (var j = 0; j < input[i].length; j++) {
-                    if (input[i][j] === playerGoing) {
+                for (var j = 0; j < input[rowOfPlayer].length; j++) {
+                    if (input[rowOfPlayer][j] === playerGoing) {
                         var columnOfPlayer = j
 
                         for (var k = rowOfPlayer-1; k > -1; k--) {
@@ -131,7 +131,7 @@ function reversi(input) {
             if (input[i].includes(playerGoing)) {
                 var rowOfPlayer = i
 
-                for (var j = 0; j < input[i].length; j++) {
+                for (var j = 0; j < input[rowOfPlayer].length; j++) {
                     if (input[rowOfPlayer][j] === playerGoing) {
                         var columnOfPlayer = j
 
@@ -157,7 +157,7 @@ function reversi(input) {
             if (input[i].includes(playerGoing)) {
                 var rowOfPlayer = i
 
-                for (var j = 0; j < input[i].length; j++) {
+                for (var j = 0; j < input[rowOfPlayer].length; j++) {
                     if (input[rowOfPlayer][j] === playerGoing) {
                         var columnOfPlayer = j
 
@@ -183,7 +183,7 @@ function reversi(input) {
             if (input[i].includes(playerGoing)) {
                 var rowOfPlayer = i
 
-                for (var j = 0; j < input[i].length; j++) {
+                for (var j = 0; j < input[rowOfPlayer].length; j++) {
                     if (input[rowOfPlayer][j] === playerGoing) {
                         var columnOfPlayer = j
 
