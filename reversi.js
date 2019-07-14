@@ -178,6 +178,32 @@ function reversi(input) {
         }
     }
 
+    function canGoDiagonallyDownLeft () {
+        for (var i = 0; i < input.length - 1; i++) {
+            if (input[i].includes(playerGoing)) {
+                var rowOfPlayer = i
+
+                for (var j = 0; j < input[i].length; j++) {
+                    if (input[rowOfPlayer][j] === playerGoing) {
+                        var positionOfPlayer = j
+
+                        for (var k = rowOfPlayer + 1; k < 9; k++) {
+                            if (input[k][positionOfPlayer - 1] === opposingPlayer) {
+                                positionOfPlayer--
+                                continue
+                            } else if (input[k-1][positionOfPlayer] === opposingPlayer && input[k][positionOfPlayer - 1] === '.') {
+                                input[k][positionOfPlayer - 1] = '0'
+                                break
+                            } else {
+                                break
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     canGoLeft()
     canGoRight()
     canGoUp()
@@ -185,6 +211,7 @@ function reversi(input) {
     canGoDiagonallyUpRight()
     canGoDiagonallyUpLeft()
     canGoDiagonallyDownRight()
+    canGoDiagonallyDownLeft()
 
     return input
 }
