@@ -13,9 +13,9 @@ function reversi(input) {
 
         for (var i = 0; i < input.length-1; i++) {
             if (input[i].includes(playerGoing)) {
-                var positionOfPlayer = input[i].indexOf(playerGoing)
+                var columnOfPlayer = input[i].indexOf(playerGoing)
 
-                for  (var j = positionOfPlayer - 1; j > -1; j--) {
+                for  (var j = columnOfPlayer - 1; j > -1; j--) {
                     if (input[i][j] === opposingPlayer) {
                         continue
                     } else if (input[i][j+1] === opposingPlayer && input[i][j] === '.') {
@@ -33,9 +33,9 @@ function reversi(input) {
 
         for (var i = 0; i < input.length-1; i++) {
             if (input[i].includes(playerGoing)) {
-                var positionOfPlayer = input[i].indexOf(playerGoing)
+                var columnOfPlayer = input[i].indexOf(playerGoing)
 
-                for (var j = positionOfPlayer + 1; j < 9; j++) {
+                for (var j = columnOfPlayer + 1; j < 9; j++) {
                     if (input[i][j] === opposingPlayer) {
                         continue
                     } else if (input[i][j-1] === opposingPlayer && input[i][j] === '.') {
@@ -56,13 +56,13 @@ function reversi(input) {
 
                 for (var j = 0; j < input[i].length; j++) {
                     if (input[i][j] === playerGoing) {
-                        var positionOfPlayer = j
+                        var columnOfPlayer = j
                         
                         for (var k = rowOfPlayer - 1; k > -1; k--) {
-                            if (input[k][positionOfPlayer] === opposingPlayer) {
+                            if (input[k][columnOfPlayer] === opposingPlayer) {
                                 continue
-                            } else if (input[k+1][positionOfPlayer] === opposingPlayer && input[k][positionOfPlayer] === '.') {
-                                input[k][positionOfPlayer] = '0'
+                            } else if (input[k+1][columnOfPlayer] === opposingPlayer && input[k][columnOfPlayer] === '.') {
+                                input[k][columnOfPlayer] = '0'
                             } else {
                                 break
                             }
@@ -82,13 +82,13 @@ function reversi(input) {
 
                 for (var j = 0; j < input[i].length; j++ ) {
                     if (input[i][j] === playerGoing) {
-                        var positionOfPlayer = j
+                        var columnOfPlayer = j
 
                         for (var k = rowOfPlayer + 1; k < 9; k++ ) {
-                            if (input[k][positionOfPlayer] === opposingPlayer) {
+                            if (input[k][columnOfPlayer] === opposingPlayer) {
                                 continue
-                            } else if(input[k-1][positionOfPlayer] === opposingPlayer && input[k][positionOfPlayer] === '.') {
-                                input[k][positionOfPlayer] = '0'
+                            } else if(input[k-1][columnOfPlayer] === opposingPlayer && input[k][columnOfPlayer] === '.') {
+                                input[k][columnOfPlayer] = '0'
                             } else {
                                 break
                             }
@@ -107,14 +107,14 @@ function reversi(input) {
 
                 for (var j = 0; j < input[i].length; j++) {
                     if (input[i][j] === playerGoing) {
-                        var positionOfPlayer = j
+                        var columnOfPlayer = j
 
                         for (var k = rowOfPlayer-1; k > -1; k--) {
-                            if (input[k][positionOfPlayer + 1] === opposingPlayer) {
-                                positionOfPlayer ++
+                            if (input[k][columnOfPlayer + 1] === opposingPlayer) {
+                                columnOfPlayer ++
                                 continue
-                            } else if (input[k + 1][positionOfPlayer] === opposingPlayer && input[k][positionOfPlayer + 1] === '.') {
-                                input[k][positionOfPlayer + 1] = '0'
+                            } else if (input[k + 1][columnOfPlayer] === opposingPlayer && input[k][columnOfPlayer + 1] === '.') {
+                                input[k][columnOfPlayer + 1] = '0'
                                 break
                             } else {
                                 break
@@ -133,14 +133,14 @@ function reversi(input) {
 
                 for (var j = 0; j < input[i].length; j++) {
                     if (input[rowOfPlayer][j] === playerGoing) {
-                        var positionOfPlayer = j
+                        var columnOfPlayer = j
 
                         for (var k = rowOfPlayer-1; k > -1; k--) {
-                            if (input[k][positionOfPlayer-1] === opposingPlayer) {
-                                positionOfPlayer --
+                            if (input[k][columnOfPlayer-1] === opposingPlayer) {
+                                columnOfPlayer --
                                 continue
-                            } else if (input[k+1][positionOfPlayer] === opposingPlayer && input[k][positionOfPlayer - 1] === '.') {
-                                input[k][positionOfPlayer - 1] = '0'
+                            } else if (input[k+1][columnOfPlayer] === opposingPlayer && input[k][columnOfPlayer - 1] === '.') {
+                                input[k][columnOfPlayer - 1] = '0'
                                 break
                             } else {
                                 break
@@ -159,14 +159,14 @@ function reversi(input) {
 
                 for (var j = 0; j < input[i].length; j++) {
                     if (input[rowOfPlayer][j] === playerGoing) {
-                        var positionOfPlayer = j
+                        var columnOfPlayer = j
 
                         for (var k = rowOfPlayer + 1; k < 9; k++) {
-                            if (input[k][positionOfPlayer + 1] === opposingPlayer) {
-                                positionOfPlayer++
+                            if (input[k][columnOfPlayer + 1] === opposingPlayer) {
+                                columnOfPlayer++
                                 continue
-                            } else if (input[k-1][positionOfPlayer] === opposingPlayer && input[k][positionOfPlayer + 1] === '.') {
-                                input[k][positionOfPlayer + 1] = '0'
+                            } else if (input[k-1][columnOfPlayer] === opposingPlayer && input[k][columnOfPlayer + 1] === '.') {
+                                input[k][columnOfPlayer + 1] = '0'
                                 break
                             } else {
                                 break
@@ -185,14 +185,14 @@ function reversi(input) {
 
                 for (var j = 0; j < input[i].length; j++) {
                     if (input[rowOfPlayer][j] === playerGoing) {
-                        var positionOfPlayer = j
+                        var columnOfPlayer = j
 
                         for (var k = rowOfPlayer + 1; k < 9; k++) {
-                            if (input[k][positionOfPlayer - 1] === opposingPlayer) {
-                                positionOfPlayer--
+                            if (input[k][columnOfPlayer - 1] === opposingPlayer) {
+                                columnOfPlayer--
                                 continue
-                            } else if (input[k-1][positionOfPlayer] === opposingPlayer && input[k][positionOfPlayer - 1] === '.') {
-                                input[k][positionOfPlayer - 1] = '0'
+                            } else if (input[k-1][columnOfPlayer] === opposingPlayer && input[k][columnOfPlayer - 1] === '.') {
+                                input[k][columnOfPlayer - 1] = '0'
                                 break
                             } else {
                                 break
