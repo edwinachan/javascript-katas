@@ -1,22 +1,20 @@
-//The Next challenge. Use your solution to the LCD problem to print out the current time in 24 hour format every second (you will need to add a separator for hours and mins).
-
-//let timer = setInterval(() => console.log(new Date()), 1000)
-
 var digits = {
-    1: ['  ' , '| ', '| '],
-    2: [' _  ', ' _| ',  '|_  '],
-    3:  ['_  ', '_| ', '_| '],
-    4: ['    ', '|_| ', '  | '],
-    5: [' _  ', '|_  ', ' _| '],
-    6: [' _  ', '|_  ', '|_| '],
-    7: ['_  ', ' | ', ' | '],
-    8: [' _  ', '|_| ', '|_| '],
-    9: [' _  ', '|_| ', ' _| ']
+    '0': [' _  ', '| | ', '|_| '],
+    '1': ['  ' , '| ', '| '],
+    '2': [' _  ', ' _| ',  '|_  '],
+    '3':  ['_  ', '_| ', '_| '],
+    '4': ['    ', '|_| ', '  | '],
+    '5': [' _  ', '|_  ', ' _| '],
+    '6': [' _  ', '|_  ', '|_| '],
+    '7': ['_  ', ' | ', ' | '],
+    '8': [' _  ', '|_| ', '|_| '],
+    '9': [' _  ', '|_| ', ' _| ']
 
 }
 
 function lcd(input, w, h) {
-    var s = Array.from(input.toString()).map(Number)
+
+    var sSplit = input.split('')
 
     var rows = []
 
@@ -99,11 +97,12 @@ function lcd(input, w, h) {
 
     generateNumberOfRows()
 
-    for (var i = 0; i < s.length; i++) {
+    for (var i = 0; i < sSplit.length; i++) {
 
+      if (sSplit[i] !== ':') {
             var arrayOfNums = []
                 
-            convertNumsToArrays(digits[s[i]])
+            convertNumsToArrays(digits[sSplit[i]])
 
             changeWidth(arrayOfNums)
 
@@ -111,7 +110,12 @@ function lcd(input, w, h) {
 
             changeHeight(arrayOfNums)
 
-            generateResult(arrayOfNumsWithHeight)  
+            generateResult(arrayOfNumsWithHeight)
+
+        } else {
+          var colon = [[' '], [' '], [':']]
+          generateResult(colon)
+        }
             
     }
 
@@ -125,6 +129,7 @@ function lcd(input, w, h) {
 
 }
 
+
 var timerFunction = setInterval(time, 1000)
 
 function time() {
@@ -136,11 +141,17 @@ function time() {
     var minString = min.toString()
     var secondsString = seconds.toString()
 
-    var timeString = hrString.concat(minString, secondsString)
-    var time = parseInt(timeString)
+    var timeArray = [hrString, minString, secondsString]
 
+    timeArray.forEach(function(item, index, array) {
+        if (item === '0') {
+            array[index] = '00'
+        } else if (item.length === 1) {
+            array[index] = '0'.concat(item)
+        }
+    })
 
-    console.log(lcd(time, 1, 1))
+    var timeString = timeArray.join(':')
+    console.log(lcd(timeString, 1, 1))
+
 }
-
-
